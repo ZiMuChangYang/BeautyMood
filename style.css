@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000;
+}
+
+.media-container {
+    width: 100%;
+    height: calc(100% - 80px); /* 减去控制栏的高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#randomImage, #randomVideo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.loading.active {
+    display: block;
+}
+
+.controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+}
+
+.category-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    min-width: 80px;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 视频控制条样式优化 */
+#randomVideo::-webkit-media-controls {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#randomVideo::-webkit-media-controls-panel {
+    padding: 0 10px;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .controls {
+        height: 120px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .category-buttons, .action-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+        min-width: 70px;
+    }
+}
+
+/* 全屏模式下的样式 */
+:fullscreen .controls {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+:fullscreen .media-container {
+    height: calc(100% - 80px);
+}
+
+.resolution-info {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.error-message {
+    color: #ff4444;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+}
+
+.error-message.active {
+    display: block;
+}
+
+.api-info {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.url-display {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 15px;
+}
+
+#randomVideo {
+    filter: brightness(1.5); /* 亮度提升50% (默认1.0) */
+    width: 100%;
+    max-height: 70vh;
+}
+
+/* 如果亮度需要动态调整，可添加以下备用规则 */
+.video-brightness {
+    filter: brightness(var(--video-brightness, 1.5));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    min-height: 100vh;
+    position: relative;
+}
+
+.content {
+    padding: 20px;
+    max-width: 90vw;  /* 占屏幕宽度的90%（替代固定像素值） */
+    margin: 0 auto;
+    padding-top: 5vh;  /* 顶部边距为视口高度的5% */
+}
+
+#mediaContainer {
+    text-align: center;
+    margin: 20px 0;
+    min-height: 70vh;  /* 最小高度占视口高度的70% */
+}
+
+#mediaContainer img {
+    max-width: 100%;  /* 宽度占容器的100% */
+    max-height: 70vh;  /* 高度占视口高度的70% */
+    object-fit: contain;  /* 保持宽高比并完全显示内容 */
+}
+
+#mediaContainer video {
+    width: 100%;  /* 宽度占容器的100% */
+    max-height: 70vh;  /* 高度占视口高度的70% */
+    object-fit: contain;  /* 保持宽高比并完全显示内容 */
+}
+
+.controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.media-type-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;  /* 保持按钮居中 */
+    margin-bottom: 20px;
+    width: 100%;  /* 确保容器占满父级宽度 */
+}
+
+/* 默认状态：透明 */
+.tab-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+    background: rgba(220, 220, 220, 0.7);
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    opacity: 0.5;  /* 默认透明度50% */
+    transition: opacity 0.3s ease;  /* 添加透明度过渡动画 */
+}
+
+/* 选中状态：高亮（透明度100%） */
+.tab-btn.active {
+    opacity: 1;  /* 完全不透明高亮 */
+    background: rgba(240, 240, 240, 0.7);  /* 保持悬停时的亮灰色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transform: scale(1.03);
+}
+
+.tab-btn:hover {
+    background: rgba(240, 240, 240, 0.7);  /* 悬停时保持亮灰色 */
+}
+
+/* 隐藏上一个按钮 */
+#prevBtn {
+    display: none;
+}
