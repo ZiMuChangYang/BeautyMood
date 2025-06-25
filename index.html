@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频展示页</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="media-type-buttons">
+                <button class="tab-btn" id="favoritePageBtn">收藏夹</button>
+            </div>
+            <div id="mediaContainer"></div>
+        </div>
+        <div class="controls">
+            <button class="control-btn" id="prevBtn">上一个</button>
+            <button class="control-btn" id="nextBtn">下一个</button>
+            <button class="control-btn" id="fullscreenBtn">全屏</button>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+    <script>
+      document.getElementById('favoritePageBtn').onclick = function() {
+        window.location.href = 'favorites.html';
+      };
+    </script>
+</body>
+</html>
