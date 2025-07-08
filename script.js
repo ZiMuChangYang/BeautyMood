@@ -23,10 +23,9 @@ const mediaConfig = {
         "http://www.yujn.cn/api/wmsc.php",
         "http://www.yujn.cn/api/shwd.php",
         "http://www.yujn.cn/api/chuanda.php",
-        "http://yzkzapi.com/api/",
         "https://api.mmp.cc/api/miss?type=mp4",
         "https://www.yviii.com/video/i.php",
-        "https://www.yviii.com/video/suiji.php"
+        "https://www.yviii.com/video/suiji.php",
     ]
 };
 
